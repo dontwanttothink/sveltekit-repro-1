@@ -12,7 +12,7 @@ export const buildTimeEmojis = prerender(async () => {
 async function fetchDescriptionFromFileSystem(emoji: string) {
 	// imagine this actually fetches a description from the file system
 	// or some other source available only at build time
-	return "this emoji means something related to " + emoji;
+	return "something related to " + emoji;
 }
 
 export const buildTimeEmojiInfo = prerender(
