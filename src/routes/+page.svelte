@@ -3,6 +3,6 @@
 </script>
 
 {#each await buildTimeEmojis() as emoji}
-<h2>{emoji}</h2>
-<p>{await buildTimeEmojiInfo(emoji)}</p>
+	<h2>{emoji}</h2>
+	<p>{await buildTimeEmojiInfo(emoji)}</p>
 {/each}
