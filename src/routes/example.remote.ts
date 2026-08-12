@@ -1,12 +1,18 @@
 import * as v from "valibot";
 import { prerender } from "$app/server";
 
-export const buildTimeEmojis = prerender(async () => {
+async function getBuildTimeEmojis() {
+	await Promise.resolve(); // imagine something that can only be done at build time
+
 	if (Date.now() % 2 === 0) {
 		return ["😢", "😭", "🐮", "🤠", "🦧"];
 	} else {
 		return ["🪄", "❓", "👩‍⚕️", "🥲", "❤️"];
 	}
+}
+
+export const buildTimeEmojis = prerender(async () => {
+	return getBuildTimeEmojis();
 });
 
 async function fetchDescriptionFromFileSystem(emoji: string) {
@@ -21,5 +27,5 @@ export const buildTimeEmojiInfo = prerender(
 		const description = await fetchDescriptionFromFileSystem(emoji);
 		return `the emoji ${emoji} means ${description}!`;
 	},
-	{ inputs: async () => await buildTimeEmojis() },
+	{ inputs: async () => ["hi", "hello"] },
 );
